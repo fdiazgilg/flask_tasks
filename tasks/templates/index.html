@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Mis tareas</h1>
+    <form action="/index">
+        <table class="tasks_table">
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Fecha de realización</th>
+            </tr>
+            {%for item in registros %}
+            <tr>
+                <td align="CENTER">{{item[0]}}</td>
+                <td align="CENTER">{{item[1]}}</td>
+                <td align="CENTER">{{item[2]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    <form method="get" action="/newtask">
+        <button type="submit">Nueva Tarea</button>
+    </form>
+</body>
+</html>

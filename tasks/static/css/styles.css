@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tasks_table{
+    width: 80%;
+    margin: 12px auto;
+}
+
+nav{
+    margin: 12px 0;
+}
+
+.tasks_table td, .tasks_table th{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.tasks_table th{
+    border-color: black;
+}
