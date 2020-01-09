@@ -4,19 +4,25 @@
 
 {% block content %}
     <h1>Mis tareas</h1>
-    <table class="u-full-width">
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Fecha de realización</th>
-        </tr>
-        {%for item in registros %}
-        <tr>
-            <td align="CENTER">{{item[0]}}</td>
-            <td align="CENTER">{{item[1]}}</td>
-            <td align="CENTER">{{item[2]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a class="button button-primary u-pull-right" href="/newtask">Nueva Tarea</a>
+    <form action="/processtask">
+        <table class="u-full-width">
+            <tr>
+                <th></th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Fecha de realización</th>
+            </tr>
+            {%for item in registros %}
+            <tr>
+                <td><input type="radio" name="ix" value="{{loop.index}}"></td>
+                <td align="CENTER">{{item[0]}}</td>
+                <td align="CENTER">{{item[1]}}</td>
+                <td align="CENTER">{{item[2]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button class="button-primary" name="btnModificar" type="submit">Modificar</button>
+        <button class="button-primary" name="btnBorrar" type="submit">Borrar</button>
+        <a class="button button-primary u-pull-right" href="/newtask">Nueva Tarea</a>
+    </form>
 {% endblock %}
