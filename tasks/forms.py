@@ -25,4 +25,4 @@ class ProcessTaskForm(FlaskForm):
     description = StringField('Descripción', widget=TextArea())
     fx = DateField('Fecha', validators=[DataRequired()])
 
-    submit = SubmitField('Enviar')
+    submit = SubmitField('Aceptar')
