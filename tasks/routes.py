@@ -5,7 +5,7 @@ from tasks.forms import TaskForm, ProcessTaskForm
 import sqlite3
 from datetime import date
 
-BASE_DATOS = './data/tasks.db'
+BASE_DATOS = './data/{}'.format(app.config['DB_FILE'])
 
 def dict_factory(cursor, row):
     d = {}
