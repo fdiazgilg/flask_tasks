@@ -35,11 +35,12 @@ def index():
 
     if datos:
         if isinstance(datos, dict):
-            datos = [datos]    
-        
-        return render_template("index.html", registros=datos)
+            datos = [datos]
     else:
-        return redirect(url_for('newtask'))
+        datos = []
+
+    return render_template("index.html", registros=datos)
+
 
 @app.route("/newtask", methods=['GET', 'POST'])
 def newtask():
