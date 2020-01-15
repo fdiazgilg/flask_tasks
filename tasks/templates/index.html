@@ -12,14 +12,20 @@
                 <th>Descripción</th>
                 <th>Fecha de realización</th>
             </tr>
-            {%for item in registros %}
+            {% if registros|length == 0 %}
             <tr>
-                <td><input type="radio" name="ix" value="{{item['id']}}"></td>
-                <td>{{item['titulo']}}</td>
-                <td>{{item['descripcion']}}</td>
-                <td>{{item['fecha']}}</td>
+                <td colspan="4">No hay tareas</td>
             </tr>
-            {% endfor %}
+            {% else %}
+                {%for item in registros %}
+                <tr>
+                    <td><input type="radio" name="ix" value="{{item['id']}}"></td>
+                    <td>{{item['titulo']}}</td>
+                    <td>{{item['descripcion']}}</td>
+                    <td>{{item['fecha']}}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
         </table>
         <button class="button-primary" name="btnModificar" type="submit">Modificar</button>
         <button class="button-primary" name="btnBorrar" type="submit">Borrar</button>
