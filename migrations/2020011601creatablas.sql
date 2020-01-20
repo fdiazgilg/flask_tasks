@@ -9,7 +9,7 @@ CREATE TABLE "tareas1" (
 	FOREIGN KEY("id_empleado") REFERENCES "empleados"("id")
 );
 
-INSERT INTO "tareas1" (titulo, descripcion, fecha) VALUES (SELECT titulo, descripcion, fecha FROM tareas);
+INSERT INTO "tareas1" (titulo, descripcion, fecha) SELECT tareas.titulo, tareas.descripcion, tareas.fecha FROM tareas;
 
 DROP TABLE "tareas";
 
