@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="/static/css/normalize.css">
     <link rel="stylesheet" href="/static/css/skeleton.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+
 </head>
 <body>
     <header>
-        <a href="/" class="logo">Mis Tareas</a>
+        <a href="/" class="logo">Tareas</a> | <a href="/employees">Empleados</a>
     </header>
-    <!--<nav><a class="boton" href="/">Inicio</a> | <a class="boton" href="/newtask">Añadir tarea</a></nav>-->
     <section class="container">
         {% block content %}{% endblock %}
     </section>
-    <footer>
-        ®2020 - Todos los derechos reservados
-    </footer>
+    <footer>&copy 2020 - Todos los derechos reservados</footer>
 </body>
 </html>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Empleados {% endblock %}
+
+{% block content %}
+    <h1>Lista de empleados</h1>
+    <form action="/processemployee">
+        <table class="u-full-width">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+            </tr>
+            {% if registros|length == 0 %}
+            <tr>
+                <td class="field-error" colspan="4">No hay empleados</td>
+            </tr>
+            {% endif %}
+            {% for empleado in registros %}
+            <tr>
+                <td><input type="radio" name="ix" value="{{empleado['id']}}" ></td>
+                <td>{{empleado['name']}}</td>
+                <td>{{empleado['apellidos']}}</td>
+                <td>{{empleado['email']}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button class="button-primary" name="btnModificar" type="submit">Modificar</button>
+        <button class="button-primary" name="btnBorrar" type="submit">Borrar</button>
+        <a class="button button-primary u-pull-right" href="/newemployee">Nuevo empleado</a>
+    </form>
+{% endblock %}

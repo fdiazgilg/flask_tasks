@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
-{% block title%} Modificar Tarea {% endblock %}
+{% block title %} Gestión de Tarea {% endblock %}
 
 {% block content %}
     {% if form.btn.data == 'M' %}
-    <h1>Modificar Tarea</h1>
+        <h1>Modificar Tarea</h1>
     {% endif %}
     {% if form.btn.data == 'B' %}
-    <h1>Borrar Tarea</h1>
+        <h1>Borrar Tarea</h1>
     {% endif %}
     <form action="/processtask" method="post">
         {{ form.hidden_tag() }}
+
         <div class="row">
             {{ form.ix(class="u-full-width") }}
             {{ form.btn(class="u-full-width") }}
         </div>
+
         <div class="row">
             <div class="six columns">
                 {{ form.title(class="u-full-width", placeholder="Título") }}
@@ -25,7 +27,7 @@
                 {% endif %}
             </div>
             <div class="six columns">
-                {{ form.fx(class="u-full-width", type="date") }}
+                {{ form.fx(class='u-full-width', type="date") }}
                 {% if form.fx.errors %}
                     {% for error in form.fx.errors %}
                         <p class='field-error'>{{ error }}</p>
@@ -40,7 +42,10 @@
                     <p class='field-error'>{{ error }}</p>
                 {% endfor %}
             {% endif %}
+
         </div>
         {{ form.submit(class="button-primary") }}
+        <!--input type="submit" class="button-primary" value="Enviar"-->
     </form>
-{% endblock %}}
+
+{% endblock %}

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title%} Nueva Tarea {% endblock %}
+{% block title %} Alta de tarea {% endblock %}
 
 {% block content %}
-    <h1>Añadir Tarea</h1>
+    <h1>Alta de tarea</h1>
     <form action="/newtask" method="post">
         {{ form.hidden_tag() }}
         <div class="row">
-            <div class="six columns">
+            <div class="four columns">
                 {{ form.title(class="u-full-width", placeholder="Título") }}
                 {% if form.title.errors %}
                     {% for error in form.title.errors %}
@@ -15,10 +15,18 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="six columns">
-                {{ form.fx(class="u-full-width", type="date") }}
+            <div class="four columns">
+                {{ form.fx(class='u-full-width', type="date") }}
                 {% if form.fx.errors %}
                     {% for error in form.fx.errors %}
+                        <p class='field-error'>{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="four columns">
+                {{ form.id_employee(class="u-full-width", placeholder="Empleado") }}
+                {% if form.id_employee.errors %}
+                    {% for error in form.id_employee.errors %}
                         <p class='field-error'>{{ error }}</p>
                     {% endfor %}
                 {% endif %}
@@ -31,7 +39,10 @@
                     <p class='field-error'>{{ error }}</p>
                 {% endfor %}
             {% endif %}
+
         </div>
         {{ form.submit(class="button-primary") }}
+        <!--input type="submit" class="button-primary" value="Enviar"-->
     </form>
-{% endblock %}}
+
+{% endblock %}

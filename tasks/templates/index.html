@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 
-{% block title%} Mis tareas {% endblock %}
+{% block title %} Tareas {% endblock %}
 
 {% block content %}
-    <h1>Mis tareas</h1>
+    <h1>Lista de tareas</h1>
     <form action="/processtask">
         <table class="u-full-width">
             <tr>
-                <th></th>
+                <th>#</th>
                 <th>Título</th>
                 <th>Descripción</th>
-                <th>Fecha de realización</th>
+                <th>Fecha</th>
+                <th>Empleado</th>
             </tr>
             {% if registros|length == 0 %}
             <tr>
-                <td colspan="4">No hay tareas</td>
+                <td class="field-error" colspan="5">No hay tareas</td>
             </tr>
-            {% else %}
-                {%for item in registros %}
-                <tr>
-                    <td><input type="radio" name="ix" value="{{item['id']}}"></td>
-                    <td>{{item['titulo']}}</td>
-                    <td>{{item['descripcion']}}</td>
-                    <td>{{item['fecha']}}</td>
-                </tr>
-                {% endfor %}
             {% endif %}
+            {% for tarea in registros %}
+            <tr>
+                <td><input type="radio" name="ix" value="{{tarea['id']}}"></td>
+                <td>{{tarea['titulo']}}</td>
+                <td>{{tarea['descripcion']}}</td>
+                <td>{{tarea['fecha']}}</td>
+                {% if tarea['name'] == None %}
+                    <td>{{ '-' }}</td>
+                {% else %}
+                    <td>{{'{} {}'.format(tarea['name'], tarea['apellidos'])}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
         </table>
         <button class="button-primary" name="btnModificar" type="submit">Modificar</button>
         <button class="button-primary" name="btnBorrar" type="submit">Borrar</button>
-        <a class="button button-primary u-pull-right" href="/newtask">Nueva Tarea</a>
+        <a class="button button-primary u-pull-right" href="/newtask">Nueva tarea</a>
     </form>
 {% endblock %}

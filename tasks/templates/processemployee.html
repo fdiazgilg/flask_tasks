@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} Gestión de Empleado {% endblock %}
+
+{% block content %}
+    {% if form.btn.data == 'M' %}
+        <h1>Modificar Empleado</h1>
+    {% endif %}
+    {% if form.btn.data == 'B' %}
+        <h1>Borrar Empleado</h1>
+    {% endif %}
+    <form action="/processemployee" method="post">
+        {{ form.hidden_tag() }}
+
+        <div class="row">
+            {{ form.id(class="u-full-width") }}
+            {{ form.btn(class="u-full-width") }}
+        </div>
+
+        <div class="row">
+            {{ form.name(class="u-full-width", placeholder="Nombre") }}
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <p class='field-error'>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row">
+            {{ form.lastname(class='u-full-width', placeholder="Apellidos") }}
+            {% if form.lastname.errors %}
+                {% for error in form.lastname.errors %}
+                    <p class='field-error'>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row">
+            {{ form.email(class="u-full-width", placeholder="Correo electrónico", type="email") }}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <p class='field-error'>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+        {{ form.submit(class="button-primary") }}
+        <!--input type="submit" class="button-primary" value="Enviar"-->
+    </form>
+
+{% endblock %}
